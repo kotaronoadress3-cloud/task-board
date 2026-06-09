@@ -4,17 +4,58 @@
 
 タスク管理ボードアプリケーション。
 
+## デプロイ先
+
+https://kotaronoadress3-cloud.github.io/task-board/
+
 ## 技術スタック
 
-（プロジェクト開始時に記入）
+| カテゴリ | 採用技術 |
+|----------|----------|
+| フレームワーク | React 18 |
+| ビルドツール | Vite 6 |
+| 言語 | JavaScript (JSX) |
+| スタイリング | Plain CSS（CSS Modules 不使用） |
+| 状態管理 | React `useState` / `useEffect` |
+| 永続化 | `localStorage` |
+| デプロイ | GitHub Pages（GitHub Actions による自動デプロイ） |
 
 ## ディレクトリ構成
 
-（プロジェクト開始時に記入）
+```
+task-board/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml       # GitHub Pages 自動デプロイ
+├── src/
+│   ├── components/
+│   │   ├── TaskInput.jsx    # タスク入力フォーム
+│   │   ├── TaskItem.jsx     # タスク1件の行
+│   │   └── TaskList.jsx     # タスク一覧
+│   ├── App.jsx              # ルートコンポーネント・状態管理
+│   ├── App.css              # アプリ全体のスタイル
+│   ├── index.css            # グローバルスタイル
+│   └── main.jsx             # エントリーポイント
+├── index.html
+├── vite.config.js
+└── package.json
+```
+
+## コンポーネント命名規約
+
+- **ファイル名・コンポーネント名** は PascalCase（例: `TaskItem.jsx`）
+- **1ファイル1コンポーネント**、ファイル名とコンポーネント名を一致させる
+- **コンポーネントは `src/components/` に配置**、ルートコンポーネント（`App.jsx`）のみ `src/` 直下
+- **Props の命名** はキャメルケース。イベントハンドラは `on` プレフィックス（例: `onAdd`, `onToggle`, `onDelete`）
+- CSS クラス名はケバブケース（例: `.task-item`, `.delete-btn`）
 
 ## 開発コマンド
 
-（プロジェクト開始時に記入）
+```bash
+npm run dev      # 開発サーバー起動 → http://localhost:5173
+npm run build    # 本番ビルド（dist/ に出力）
+npm run preview  # ビルド結果をローカルでプレビュー
+```
 
 ---
 
