@@ -4,9 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>タスクボード</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="/task-board/manifest.json" />
+    <meta name="theme-color" content="#6366f1" />
+
+    <!-- iOS PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="タスクボード" />
+    <link rel="apple-touch-icon" href="/task-board/icon-192.png" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/task-board/sw.js', { scope: '/task-board/' });
+        });
+      }
+    </script>
   </body>
 </html>
